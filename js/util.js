@@ -1,12 +1,15 @@
-function getRandom(a, b){
-  const diff = Math.abs(a - b);
-  const min = Math.min(a, b);
-  const rand = Math.floor(Math.random() * (diff + 1));
-  return rand + min;
+/* eslint-disable arrow-body-style */
+function getRandomInteger (a, b) {
+  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+}
+
+const getRandomElement = (elements) => {
+  return elements[getRandomInteger(0, elements.length - 1)];
 };
 
-const getRandomElement = (elements) => elements[getRandom(0, elements.length - 1)];
+const checkStringLength = (str, maxLength) => str.length <= maxLength;
 
-const isLong = (str, maxLength) => str.length <= maxLength;
-
-export {getRandom, getRandomElement, isLong};
+export {getRandomInteger, getRandomElement, checkStringLength};

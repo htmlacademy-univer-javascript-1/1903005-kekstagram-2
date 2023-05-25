@@ -1,5 +1,5 @@
-import {getRandom, getRandomElement} from './util.js';
-
+/* eslint-disable arrow-body-style */
+import {getRandomInteger, getRandomElement} from './util.js';
 const comments = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -11,36 +11,30 @@ const comments = [
 
 const names = [
   'Артём',
-  'Катя',
+  'Виталик',
   'Настя',
   'Петя',
   'Владислав',
-  'Лена',
+  'Вениамин',
   'Jack'
 ];
 
-const descriptions = [
-  'girl',
-  'plane',
-  'car',
-  'cat'
-];
-
-
 const createPhoto = () => {
-  id: getRandom(1, 25),
-  url: `photos/avatar-${getRandom(1, 25)}.jpg`,
-  description: getRandomElement(descriptions),
-  likes: getRandom(15,200),
-  comments: ()=> Array.from({length: 4},
-    {
-      id: getRandom(1,1000),
-      avatar: `img/avatar-${getRandom(1, 6)}.svg`,
+  return {
+    id: getRandomInteger(1, 25),
+    url: '',
+    description: 'NICE',
+    likes: getRandomInteger(1, 25),
+    comments: {
+      id: getRandomInteger(1, 1000),
+      avatar: `../img/avatar-${getRandomInteger(1, 6)}.svg`,
       message: getRandomElement(comments),
       name: getRandomElement(names)
-    })
+    }
+  };
 };
 
-const createPhotos = () => Array.from({length: 4}, createPhoto);
+const createPhotos = () => Array.from({length: 4},
+  createPhoto);
 
 export {createPhotos};
