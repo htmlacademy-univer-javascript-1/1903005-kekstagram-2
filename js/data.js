@@ -27,19 +27,19 @@ const descriptions = [
 ];
 
 
-const createPhoto = () => ({
+const createPhoto = () => {
   id: getRandom(1, 25),
   url: `photos/avatar-${getRandom(1, 25)}.jpg`,
   description: getRandomElement(descriptions),
   likes: getRandom(15,200),
   comments: ()=> Array.from({length: 4},
     {
-      id: getRandomr(1,1000),
+      id: getRandom(1,1000),
       avatar: `img/avatar-${getRandom(1, 6)}.svg`,
       message: getRandomElement(comments),
       name: getRandomElement(names)
     })
-});
+};
 
 const createPhotos = () => Array.from({length: 4}, createPhoto);
 
