@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import './util.js';
-import { createPhotos } from './data.js';
-console.log(createPhotos());
+import './data.js';
+import './create-pics.js';
