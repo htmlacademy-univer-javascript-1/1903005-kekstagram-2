@@ -1,4 +1,5 @@
-import './util.js';
 import './data.js';
-import './create-pics.js';
-import './big-picture.js';
+import './util.js';
+import './user-photos.js';
+import './img-upload-modal.js';
+import './img-upload-form.js';
