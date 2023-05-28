@@ -1,10 +1,13 @@
 import { checkDuplicate } from './util.js';
 
+const MAX_HASHTAGS_COUNT = 5;
+// const MAX_HASHTAG_LENGTH = 20;
+const MAX_DESCRIPTION_LENGTH = 140;
+const reHashtag = /^#[a-zа-яЁё0-9]{1,19}$/;
+
 const form = document.querySelector('#upload-select-image');
 const hashtagInput = form.querySelector('.text__hashtags');
 const descriptionInput = form.querySelector('.text__description');
-
-const reHashtag = /^#[a-zа-яЁё0-9]{1,19}$/;
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -17,9 +20,9 @@ const pristine = new Pristine(form, {
 
 //Валидация хэш-тега картинки
 
-function validateHashtagCount (value) {
+function validateHashtagDuplicate (value) {
   const splitted = value.split(/\s+/);
-  return splitted.length <= 5;
+  return ! checkDuplicate(splitted);
 }
 
 pristine.addValidator(
@@ -28,18 +31,19 @@ pristine.addValidator(
   'Не должно быть повторяющихся тегов', 1, true
 );
 
-function validateHashtagDuplicate (value) {
+function validateHashtagCount (value) {
   const splitted = value.split(/\s+/);
-  return ! checkDuplicate(splitted);
+  return splitted.length <= MAX_HASHTAGS_COUNT;
 }
 
 pristine.addValidator(
   hashtagInput,
   validateHashtagCount,
-  'Хэштегов не должно быть больше пяти', 2, true
+  `Хэштегов не должно быть больше ${MAX_HASHTAGS_COUNT}`, 2, true
 );
 
 function validateHashtagRight (value) {
+  value = value.toLowerCase();
   const splitted = value.split(/\s+/);
   let isHashtagRight = true;
   splitted.forEach((element) => {
@@ -61,13 +65,13 @@ pristine.addValidator(
 
 function validateDescription (value) {
   const splitted = value.split(/\s+/);
-  return splitted.length <= 140;
+  return splitted.length <= MAX_DESCRIPTION_LENGTH;
 }
 
 pristine.addValidator(
   descriptionInput,
   validateDescription,
-  'Описание не должно превышать 140 слов', 2, false
+  `Описание не должно превышать ${MAX_DESCRIPTION_LENGTH} слов`, 2, false
 );
 
 form.addEventListener('submit', (evt) => {
