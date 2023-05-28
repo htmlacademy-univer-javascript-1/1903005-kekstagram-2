@@ -15,8 +15,8 @@ const onFormEscKeydown = (evt) => {
   }
 };
 
-const removeOnEscButton = document.removeEventListener('keydown', onFormEscKeydown);
-const addOnEscButton = document.addEventListener('keydown', onFormEscKeydown);
+//const removeOnEscButton = document.removeEventListener('keydown', onFormEscKeydown);
+//const addOnEscButton = document.addEventListener('keydown', onFormEscKeydown);
 
 function openForm () {
   formElement.classList.remove('hidden');
