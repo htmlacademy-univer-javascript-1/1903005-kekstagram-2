@@ -25,12 +25,26 @@ const createPhoto = () => {
     url: '',
     description: 'NICE',
     likes: getRandomInteger(1, 25),
-    comments: {
-      id: getRandomInteger(1, 1000),
-      avatar: `../img/avatar-${getRandomInteger(1, 6)}.svg`,
-      message: getRandomElement(comments),
-      name: getRandomElement(names)
-    }
+    comments: [
+      {
+        id: getRandomInteger(1, 1000),
+        avatar: `../img/avatar-${getRandomInteger(1, 6)}.svg`,
+        message: getRandomElement(comments),
+        name: getRandomElement(names)
+      },
+      {
+        id: getRandomInteger(1, 1000),
+        avatar: `../img/avatar-${getRandomInteger(1, 6)}.svg`,
+        message: getRandomElement(comments),
+        name: getRandomElement(names)
+      },
+      {
+        id: getRandomInteger(1, 1000),
+        avatar: `../img/avatar-${getRandomInteger(1, 6)}.svg`,
+        message: getRandomElement(comments),
+        name: getRandomElement(names)
+      }
+    ]
   };
 };
 
