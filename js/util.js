@@ -12,4 +12,8 @@ const getRandomElement = (elements) => {
 
 const checkStringLength = (str, maxLength) => str.length <= maxLength;
 
-export {getRandomInteger, getRandomElement, checkStringLength};
+const isEscapeKey = (evt) => {
+  return evt.key === 'Escape';
+};
+
+export {getRandomInteger, getRandomElement, checkStringLength,  isEscapeKey};
