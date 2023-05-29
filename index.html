@@ -116,6 +116,11 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
+                  <!-- <div class="img-upload__field-wrapper">
+                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег"
+                    onfocus="document.removeEventListener('keydown', onFormEscKeydown)"
+                    onblur="document.addEventListener('keydown', onFormEscKeydown)">
+                  </div> -->
                   <div class="img-upload__field-wrapper">
                     <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
                   </div>
@@ -157,14 +162,14 @@
           <!-- Комментарии к изображению -->
           <div class="social__comment-count">5 из <span class="comments-count">125</span> комментариев</div>
           <ul class="social__comments">
-            <!-- <li class="social__comment">
+            <li class="social__comment">
               <img class="social__picture" src="img/avatar-4.svg" alt="Аватар комментатора фотографии" width="35" height="35">
               <p class="social__text">Мега фото! Просто обалдеть. Как вам так удалось?</p>
             </li>
             <li class="social__comment">
               <img class="social__picture" src="img/avatar-3.svg" alt="Аватар комментатора фотографии" width="35" height="35">
                <p class="social__text">Да это фоташоп!!!!!!!!</p>
-            </li> -->
+            </li>
           </ul>
 
           <!-- Кнопка для загрузки новой порции комментариев -->
@@ -232,14 +237,6 @@
   <template id="messages">
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
-
-  <!-- Комментарий к фотографии -->
-  <!-- <template id ="social__comment">
-    <li class="social__comment">
-      <img        class="social__picture"        src="{{аватар}}"        alt="{{имя комментатора}}"        width="35" height="35">
-      <p class="social__text">{{текст комментария}}</p>
-    </li>
-  </template> -->
 
   <script src="nouislider/nouislider.js"></script>
   <script src="pristine/pristine.min.js"></script>
