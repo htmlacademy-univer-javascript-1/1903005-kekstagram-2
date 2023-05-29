@@ -6,10 +6,10 @@ const form = document.querySelector('#upload-select-image');
 const uploadInput = form.querySelector('#upload-file');
 const formElement = form.querySelector('.img-upload__overlay');
 const closeFormElement = form.querySelector('#upload-cancel');
-const hashtagInput = document.querySelector('input.text__hashtags');
-const descriptionInput = document.querySelector('.text__description');
 const scaleDecreaseButton = form.querySelector('.scale__control--smaller');
 const scaleIncreaseButton = form.querySelector('.scale__control--bigger');
+const hashtagInput = form.querySelector('.text__hashtags');
+const descriptionInput = form.querySelector('.text__description');
 
 const onUploadEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -18,7 +18,7 @@ const onUploadEscKeydown = (evt) => {
   }
 };
 
-function openUploadPopup () {
+function openForm () {
   formElement.classList.remove('hidden');
   document.querySelector('body').classList.add('modal_open');
 
@@ -37,16 +37,30 @@ function closeUploadPopup () {
   hashtagInput.value = '';
   descriptionInput.value = '';
 
+  closeFormElement.removeEventListener('click', closeUploadPopup);
+  document.removeEventListener('keydown', onUploadEscKeydown);
+
   scaleDecreaseButton.removeEventListener('click', onScaleDecreaseClick);
   scaleIncreaseButton.removeEventListener('click', onScaleIncreaseClick);
 
   resetPhotoScale();
   resetFilters();
-
-  closeFormElement.removeEventListener('click', closeUploadPopup);
-  document.removeEventListener('keydown', onUploadEscKeydown);
 }
 
 uploadInput.addEventListener('change', () => {
-  openUploadPopup();
+  openForm();
 });
+
+hashtagInput.addEventListener('focus',
+  document.removeEventListener('keydown', onUploadEscKeydown)
+);
+hashtagInput.addEventListener('blur',
+  document.addEventListener('keydown', onUploadEscKeydown)
+);
+
+descriptionInput.addEventListener('focus',
+  document.removeEventListener('keydown', onUploadEscKeydown)
+);
+descriptionInput.addEventListener('blur',
+  document.addEventListener('keydown', onUploadEscKeydown)
+);
